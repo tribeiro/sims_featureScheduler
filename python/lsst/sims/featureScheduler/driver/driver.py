@@ -52,6 +52,8 @@ class FeatureSchedulerDriver(Driver):
 
         self.time_distribution = False
 
+        self.initialized = False
+
     def start_survey(self, timestamp, night):
 
         self.start_time = timestamp
@@ -79,6 +81,13 @@ class FeatureSchedulerDriver(Driver):
         :param config_dict:
         :return:
         '''
+        if not self.initialized and name == 'WideFastDeep':
+            self.initialize(config_dict)
+
+    def create_sequence_proposal(self, propid, name, config_dict):
+        pass
+
+    def initialize(self, config_dict):
         # Load configuration from a python module.
         # TODO:
         # This can be changed later to load from a given string, I'm planning on getting the name from
@@ -123,6 +132,8 @@ class FeatureSchedulerDriver(Driver):
 
             area_prop.configure_constraints(self.params)
             self.science_proposal_list.append(area_prop)
+
+        self.initialized = True
 
     def end_survey(self):
 
