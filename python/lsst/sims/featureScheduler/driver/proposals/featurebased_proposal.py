@@ -8,6 +8,8 @@ class FeatureBasedProposal(AreaDistributionProposal):
     def __init__(self, propid, name, confdict, skymodel):
 
         AreaDistributionProposal.__init__(self, propid, name, confdict, skymodel)
+        self.winners_list = []
+        self.losers_list = []
 
     def register_observation(self, observation):
 
