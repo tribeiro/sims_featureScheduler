@@ -880,10 +880,6 @@ class Deep_drilling_survey(BaseSurvey):
         for limit in self.HA_limits:
             lres = limit[0] <= HA < limit[1]
             result = result or lres
-            log.debug('[Feasibility:%s] HA = %.2f [%.2f:%.2f)' % ('OK' if lres else 'FL',
-                                                                  HA,
-                                                                  limit[0],
-                                                                  limit[1]))
 
         if not result:
             return False
